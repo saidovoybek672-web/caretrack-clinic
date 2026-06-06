@@ -1,0 +1,204 @@
+{
+  "users": [
+    {
+      "id": "u-admin-1",
+      "username": "admin",
+      "passwordHash": "$2a$10$taBp1Oz1qaGasnKwiKZYJu3vqfHOzO6B4setMLAlSm5Un7C1dkc/6",
+      "role": "administrator",
+      "name": "System Administrator"
+    },
+    {
+      "id": "u-clin-1",
+      "username": "clinician",
+      "passwordHash": "$2a$10$e3SiWUCKfWOG69XXEFUa0.JzMQAGEInidYXYgizKZwt3LWAsm2.eO",
+      "role": "clinician",
+      "name": "Dr. Nilufar Karimova"
+    },
+    {
+      "id": "u-recep-1",
+      "username": "reception",
+      "passwordHash": "$2a$10$jLeDhaglHNUJy0vbkIWvjuTIWa0ZFW4.10..gn10SEW.v0yauI/Sm",
+      "role": "receptionist",
+      "name": "Dilnoza Reception"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "doc-1",
+      "name": "Dr. Lesita Alexander",
+      "specialty": "Dental Surgery",
+      "department": "Stomatologiya",
+      "contact": "+998 90 123 45 01",
+      "image": "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop"
+    },
+    {
+      "id": "doc-2",
+      "name": "Dr. Feruza Rustamova",
+      "specialty": "Cardiology",
+      "department": "Kardiologiya",
+      "contact": "+998 90 123 45 02",
+      "image": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop"
+    },
+    {
+      "id": "doc-3",
+      "name": "Dr. Malika Yusupova",
+      "specialty": "Neurology",
+      "department": "Nevrologiya",
+      "contact": "+998 90 123 45 03",
+      "image": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop"
+    },
+    {
+      "id": "doc-4",
+      "name": "Dr. Jamshid Bekmurodov",
+      "specialty": "Orthopedics",
+      "department": "Ortopediya",
+      "contact": "+998 90 123 45 04",
+      "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&h=400&fit=crop"
+    },
+    {
+      "id": "doc-bbdc663f",
+      "name": "Abdurahim",
+      "specialty": "Cardiology",
+      "department": "dermatalogiya",
+      "contact": "+998 90 123 45 02",
+      "image": "https://i.pinimg.com/736x/6e/b9/a8/6eb9a8b43a13cf33dae7d2fcd83daf8a.jpg"
+    }
+  ],
+  "patients": [
+    {
+      "id": "pat-1",
+      "firstName": "Aziz",
+      "lastName": "Karimov",
+      "dateOfBirth": "1985-03-12",
+      "phone": "+998 91 111 22 33",
+      "email": "aziz.k@email.com",
+      "address": "Toshkent, Chilonzor",
+      "doctorId": "doc-2"
+    },
+    {
+      "id": "pat-2",
+      "firstName": "Nodira",
+      "lastName": "Toshmatova",
+      "dateOfBirth": "1992-07-28",
+      "phone": "+998 93 444 55 66",
+      "email": "nodira.t@email.com",
+      "address": "Toshkent, Yunusobod",
+      "doctorId": "doc-1"
+    },
+    {
+      "id": "pat-65eba117",
+      "firstName": "Maximanazar",
+      "lastName": "Sultonov",
+      "dateOfBirth": "2001-08-12",
+      "phone": "503006664",
+      "email": "saidovoybek672@gmail.com",
+      "address": "Qashqadaryo",
+      "doctorId": "doc-1"
+    },
+    {
+      "id": "pat-84a23676",
+      "firstName": "Oybek",
+      "lastName": "Saidov",
+      "dateOfBirth": "1111-11-11",
+      "phone": "503006664",
+      "email": "saidovoybek672@gmail.com",
+      "address": "andijan",
+      "doctorId": "doc-bbdc663f"
+    }
+  ],
+  "diagnoses": [
+    {
+      "id": "dx-1",
+      "icdCode": "I10",
+      "description": "Essential (primary) hypertension",
+      "severity": "moderate",
+      "patientId": "pat-1"
+    },
+    {
+      "id": "dx-2",
+      "icdCode": "K02.1",
+      "description": "Caries of dentine",
+      "severity": "mild",
+      "patientId": "pat-2"
+    },
+    {
+      "id": "dx-f52a735a",
+      "icdCode": "I10",
+      "description": "KO'P O'TIRB QO'YGAN",
+      "severity": "severe",
+      "patientId": "pat-65eba117"
+    }
+  ],
+  "clinic": {
+    "name": "CareTrack Clinic",
+    "address": "Toshkent sh., Mirzo Ulug'bek tumani, Tibbiyot ko'chasi 12",
+    "phone": "+998 71 200 00 00",
+    "emergencyPhone": "+998 71 200 00 99",
+    "email": "info@caretrack.uz",
+    "hours": "Dushanba–Juma: 08:00–20:00, Shanba: 09:00–15:00",
+    "description": "Ko'p ixtisoslashgan xususiy tibbiy markaz — umumiy amaliyot, mutaxassis qabullari, diagnostika va favqulodda yordam."
+  },
+  "services": [
+    {
+      "id": "svc-1",
+      "title": "Medicine of Health",
+      "description": "Umumiy amaliyot konsultatsiyalari va profilaktik ko'rik.",
+      "icon": "health"
+    },
+    {
+      "id": "svc-2",
+      "title": "Emergency Service",
+      "description": "Ish vaqtidan tashqari favqulodda tibbiy yordam.",
+      "icon": "emergency"
+    },
+    {
+      "id": "svc-3",
+      "title": "Patient Satisfaction",
+      "description": "Bemorlar qoniqishini o'lchash va sifat nazorati.",
+      "icon": "satisfaction"
+    },
+    {
+      "id": "svc-4",
+      "title": "Cardiology",
+      "description": "Yurak-qon tomir tizimi diagnostikasi va davolash.",
+      "icon": "heart"
+    },
+    {
+      "id": "svc-5",
+      "title": "Dental Surgery",
+      "description": "Stomatologik jarrohlik va implantatsiya.",
+      "icon": "dental"
+    },
+    {
+      "id": "svc-6",
+      "title": "Diagnostics",
+      "description": "Qon tahlili, tasvirlash va EKG xizmatlari.",
+      "icon": "diagnostics"
+    },
+    {
+      "id": "svc-7",
+      "title": "Dermatology",
+      "description": "Teri kasalliklari diagnostikasi va davolash (mutaxassis qabul).",
+      "icon": "health"
+    },
+    {
+      "id": "svc-8",
+      "title": "Patient History",
+      "description": "Bo'limlar bo'ylab bemor tibbiy tarixini kuzatish va yozuvlar.",
+      "icon": "satisfaction"
+    },
+    {
+      "id": "svc-9",
+      "title": "Referral Management",
+      "description": "Bo'limlar o'rtasida yo'llanma berish va boshqarish.",
+      "icon": "emergency"
+    }
+  ],
+  "newsletters": [
+    {
+      "id": "07e7f5f6-ff74-4838-8aa8-2208398031a8",
+      "email": "saidovoybek672@gmail.com",
+      "subscribedAt": "2026-06-04T10:21:04.990Z"
+    }
+  ]
+}

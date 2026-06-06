@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TYBT Panel — CareTrack</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body class="dashboard-page">
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <a href="/" class="logo">Care<span class="logo-accent">Track</span></a>
+      <nav>
+        <a href="#" data-tab="overview" class="active" data-i18n="tabOverview">Umumiy</a>
+        <a href="#" data-tab="doctors" id="nav-doctors" data-i18n="tabDoctors">Shifokorlar</a>
+        <a href="#" data-tab="patients" id="nav-patients" data-i18n="tabPatients">Bemorlar</a>
+        <a href="#" data-tab="diagnoses" id="nav-diagnoses" data-i18n="tabDiagnoses">Tashxislar</a>
+      </nav>
+      <button class="btn btn-outline sidebar-logout" id="logout-btn" data-i18n="logout">Chiqish</button>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <div class="dashboard-header-start">
+          <a href="/" class="dash-mobile-home" data-i18n="homeLink">← Bosh sahifa</a>
+          <div>
+            <h1 id="page-title" data-i18n="dashTitle">TYBT Boshqaruv paneli</h1>
+            <p class="user-greeting-line" id="user-greeting"></p>
+          </div>
+        </div>
+        <div class="dashboard-header-end">
+          <div data-preferences-mount class="preferences-in-panel"></div>
+          <span class="role-badge" id="role-badge"></span>
+          <button type="button" class="btn btn-outline btn-sm dash-mobile-logout" id="dash-mobile-logout" data-i18n="logout">Chiqish</button>
+        </div>
+      </div>
+
+      <section id="tab-overview" class="panel">
+        <div class="panel-intro">
+          <div class="panel-visual">
+            <img src="/images/panels/overview.svg" alt="" data-i18n-alt="panelImgOverview" />
+          </div>
+          <div class="panel-intro-body">
+            <h2 data-i18n="dashWelcome">Xush kelibsiz</h2>
+            <p id="overview-text"></p>
+            <div class="role-permissions" id="role-permissions">
+              <h3 data-i18n="permTitle">Sizning imtiyozlaringiz</h3>
+              <ul id="role-permissions-list"></ul>
+            </div>
+            <div class="dashboard-stats">
+              <div class="stat-card stat-card--patients">
+                <span class="stat-icon">🧑‍⚕️</span>
+                <strong id="dash-patients">0</strong>
+                <span data-i18n="labelPatients">Bemorlar</span>
+              </div>
+              <div class="stat-card stat-card--doctors">
+                <span class="stat-icon">👨‍⚕️</span>
+                <strong id="dash-doctors">0</strong>
+                <span data-i18n="labelDoctors">Shifokorlar</span>
+              </div>
+              <div class="stat-card stat-card--diagnoses" id="stat-diagnoses-card">
+                <span class="stat-icon">📋</span>
+                <strong id="dash-diagnoses">0</strong>
+                <span data-i18n="labelDiagnoses">Tashxislar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clinic-info-card" id="clinic-info-card">
+          <div class="clinic-info-header">
+            <h3 data-i18n="clinicInfoTitle">Klinika ma'lumotlari</h3>
+            <button type="button" class="btn btn-ghost btn-sm hidden" id="btn-edit-clinic" data-i18n="clinicEdit">Tahrirlash</button>
+          </div>
+          <div id="clinic-info-body" class="clinic-info-body"></div>
+        </div>
+        <div class="panel-chart-section" id="overview-chart-section">
+          <h3 data-i18n="chartPatientStatus">Bemorlar holati (tashxis og'irligi)</h3>
+          <p class="chart-desc" data-i18n="chartPatientStatusDesc">Tizimdagi tashxislar bo'yicha bemorlar holati</p>
+          <div class="chart-wrap">
+            <canvas id="overview-status-chart" aria-label="Bemorlar holati diagrammasi"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-doctors" class="panel hidden">
+        <div class="panel-intro panel-intro--compact">
+          <div class="panel-visual">
+            <img src="/images/panels/doctors.svg" alt="" data-i18n-alt="panelImgDoctors" />
+          </div>
+          <div class="panel-intro-body">
+            <h2 data-i18n="tabDoctors">Shifokorlar</h2>
+            <p class="panel-desc" data-i18n="panelDoctorsDesc">Klinika mutaxassislar jamoasi</p>
+            <p class="panel-hint" id="doctors-role-hint" data-i18n="hintDoctorsView"></p>
+          </div>
+        </div>
+        <div class="doctor-cards" id="doctor-cards" aria-label="Shifokorlar"></div>
+        <div class="toolbar">
+          <input type="search" id="filter-doctors" placeholder="Qidirish..." />
+          <select id="filter-doctor-department"><option value="" data-i18n="filterAllDepts">Barcha bo'limlar</option></select>
+          <button class="btn btn-primary hidden" id="btn-add-doctor">+ Shifokor</button>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Ism</th><th>Mutaxassislik</th><th>Bo'lim</th><th>Aloqa</th><th></th></tr>
+            </thead>
+            <tbody id="doctors-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="tab-patients" class="panel hidden">
+        <div class="panel-intro panel-intro--compact">
+          <div class="panel-visual">
+            <img src="/images/panels/patients.svg" alt="" data-i18n-alt="panelImgPatients" />
+          </div>
+          <div class="panel-intro-body">
+            <h2 data-i18n="tabPatients">Bemorlar</h2>
+            <p class="panel-desc" data-i18n="panelPatientsDesc">Ro'yxatdagi bemorlar va tibbiy holat</p>
+            <p class="panel-hint" id="patients-role-hint"></p>
+          </div>
+        </div>
+        <div class="panel-chart-section panel-chart-section--inline" id="patients-chart-section">
+          <h3 data-i18n="chartPatientStatus">Bemorlar holati</h3>
+          <div class="chart-wrap chart-wrap--sm">
+            <canvas id="patients-status-chart" aria-label="Bemorlar holati"></canvas>
+          </div>
+        </div>
+        <div class="toolbar">
+          <input type="search" id="filter-patients" placeholder="Qidirish..." />
+          <select id="filter-patient-doctor"><option value="">Barcha shifokorlar</option></select>
+          <button class="btn btn-primary" id="btn-add-patient">+ Bemor</button>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Ism</th><th>Shifokor</th><th>Telefon</th><th></th></tr>
+            </thead>
+            <tbody id="patients-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="tab-diagnoses" class="panel hidden">
+        <div class="panel-intro panel-intro--compact">
+          <div class="panel-visual">
+            <img src="/images/panels/diagnoses.svg" alt="" data-i18n-alt="panelImgDiagnoses" />
+          </div>
+          <div class="panel-intro-body">
+            <h2 data-i18n="tabDiagnoses">Tashxislar</h2>
+            <p class="panel-desc" data-i18n="panelDiagnosesDesc">ICD kodlari va bemorlar bog'lanishi</p>
+            <p class="panel-hint" id="diagnoses-role-hint" data-i18n="hintDiagnosesManage"></p>
+          </div>
+        </div>
+        <div class="panel-chart-section panel-chart-section--inline">
+          <h3 data-i18n="chartPatientStatus">Bemorlar holati</h3>
+          <div class="chart-wrap chart-wrap--sm">
+            <canvas id="diagnoses-status-chart" aria-label="Tashxis og'irligi"></canvas>
+          </div>
+        </div>
+        <div class="toolbar">
+          <input type="search" id="filter-diagnoses" placeholder="Qidirish..." />
+          <select id="filter-diagnosis-patient"><option value="" data-i18n="filterAllPatients">Barcha bemorlar</option></select>
+          <select id="filter-severity">
+            <option value="">Barcha og'irlik</option>
+            <option value="mild" data-i18n="severityMild">Yengil</option>
+            <option value="moderate" data-i18n="severityModerate">O'rta</option>
+            <option value="severe" data-i18n="severitySevere">Og'ir</option>
+          </select>
+          <button class="btn btn-primary hidden" id="btn-add-diagnosis">+ Tashxis</button>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>ICD</th><th>Tavsif</th><th>Og'irlik</th><th>Bemor</th><th></th></tr>
+            </thead>
+            <tbody id="diagnoses-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="tab-profile" class="panel hidden">
+        <div class="profile-toolbar">
+          <button class="btn btn-ghost" id="back-from-profile">← Orqaga</button>
+          <button class="btn btn-primary btn-sm" id="btn-print-report" data-i18n="btnDiagnosisReport">Tashxis hisoboti</button>
+        </div>
+        <h2 id="profile-name"></h2>
+        <div id="profile-content" class="profile-content"></div>
+        <div id="print-report-area" class="print-report hidden" aria-hidden="true"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <h3 id="modal-title"></h3>
+      <form id="modal-form"></form>
+      <div class="modal-actions">
+        <button type="submit" form="modal-form" class="btn btn-primary">Saqlash</button>
+        <button type="button" class="btn btn-ghost" id="modal-cancel">Bekor</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="dash-mobile-nav" id="dash-mobile-nav" aria-label="Panel navigatsiyasi">
+    <a href="#" data-tab="overview" class="active">
+      <span class="nav-icon">📊</span>
+      <span class="nav-label" data-i18n="tabOverview">Umumiy</span>
+    </a>
+    <a href="#" data-tab="doctors" id="mobile-nav-doctors">
+      <span class="nav-icon">👨‍⚕️</span>
+      <span class="nav-label" data-i18n="tabDoctors">Shifokorlar</span>
+    </a>
+    <a href="#" data-tab="patients">
+      <span class="nav-icon">🧑‍⚕️</span>
+      <span class="nav-label" data-i18n="tabPatients">Bemorlar</span>
+    </a>
+    <a href="#" data-tab="diagnoses" id="mobile-nav-diagnoses">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label" data-i18n="tabDiagnoses">Tashxislar</span>
+    </a>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+  <script src="/vendor/axios/axios.min.js"></script>
+  <script src="/vendor/chart.js/chart.umd.min.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/preferences.js"></script>
+  <script src="/js/auth-session.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirish — CareTrack</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body class="auth-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Care<span>Track</span></a>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav-panel" aria-label="Menyu">☰</button>
+      <div class="header-right" id="site-nav-panel">
+        <nav class="nav nav-compact">
+          <a href="/" data-i18n="navHome">Bosh sahifa</a>
+        </nav>
+        <div class="header-actions">
+          <div data-preferences-mount></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <div class="auth-card">
+    <h1 class="logo auth-logo">Care<span>Track</span></h1>
+    <p class="subtitle" data-i18n="subtitle">Tibbiy Yozuvlarni Boshqarish Tizimi</p>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username" data-i18n="username">Login</label>
+        <input id="username" name="username" required autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label for="password" data-i18n="password">Parol</label>
+        <input id="password" type="password" name="password" required autocomplete="current-password" />
+      </div>
+      <p class="form-error hidden" id="login-error"></p>
+      <button type="submit" class="btn btn-primary btn-block" data-i18n="submit">Kirish</button>
+    </form>
+    <p class="subtitle demo-hint" data-i18n="demo">
+      Demo: admin / admin123 · clinician / clinician123 · reception / reception123
+    </p>
+    <p class="auth-home-link"><a href="/" data-i18n="homeLink">← Bosh sahifa</a></p>
+  </div>
+
+  <script src="/vendor/axios/axios.min.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/preferences.js"></script>
+  <script src="/js/auth-session.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/mobile-nav.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

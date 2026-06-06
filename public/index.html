@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareTrack Clinic — MediCore Solutions</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Care<span>Track</span></a>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav-panel" aria-label="Menyu">☰</button>
+      <div class="header-right" id="site-nav-panel">
+        <nav class="nav">
+          <a href="#home" data-i18n="navHome">Bosh sahifa</a>
+          <a href="#about" data-i18n="navAbout">Biz haqimizda</a>
+          <a href="#services" data-i18n="navServices">Xizmatlar</a>
+          <a href="#specialists" data-i18n="navSpecialists">Mutaxassislar</a>
+        </nav>
+        <div class="header-actions">
+          <div data-preferences-mount></div>
+          <a href="/login" class="btn btn-outline" data-i18n="navLogin">Kirish</a>
+          <a href="/dashboard" class="btn btn-primary" data-i18n="navPanel">TYBT Panel</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <h1 data-i18n="heroTitle">Eng yaxshi tibbiy xizmat yechimlari.</h1>
+            <p class="lead" data-i18n="heroLead">CareTrack Clinic — ko'p ixtisoslashgan xususiy tibbiy markaz uchun MediCore Solutions tomonidan ishlab chiqilgan TYBT.</p>
+            <div class="stats-row">
+              <div class="stat">
+                <strong id="stat-patients">—</strong>
+                <span data-i18n="statPatients">Bemorlar</span>
+              </div>
+              <div class="stat">
+                <strong id="stat-doctors">—</strong>
+                <span data-i18n="statDoctors">Mutaxassis shifokorlar</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a href="/login" class="btn btn-primary" data-i18n="heroCta">Biz bilan boshlang</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img class="hero-card-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Tibbiy xizmat" />
+          </div>
+        </div>
+        <div class="hero-search-wrap">
+          <form class="booking-bar" id="search-form">
+            <input type="text" id="search-q" data-i18n-placeholder="searchDoctor" placeholder="Shifokor yoki mutaxassislik qidiring" />
+            <input type="text" id="search-location" data-i18n-placeholder="searchLocation" placeholder="Bo'lim yoki joylashuv" />
+            <button type="submit" class="btn btn-primary" data-i18n="searchBtn">Qidirish</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-i18n="servicesTitle">Sizga eng yaxshi tibbiy xizmatlarni taqdim etamiz</h2>
+          <p data-i18n="servicesSub">Umumiy amaliyot, mutaxassisliklar, diagnostika va favqulodda yordam</p>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+      </div>
+    </section>
+
+    <section class="find-doctor" id="about">
+      <div class="container find-grid">
+        <div>
+          <h2 data-i18n="findTitle">To'g'ri shifokorni toping</h2>
+          <p class="text-muted" data-i18n="findP">Bo'limlar bo'ylab bemor tarixini kuzatish, tashxis yozuvlarini boshqarish va xavfsiz rol asosidagi kirish.</p>
+          <ul class="text-muted find-list">
+            <li data-i18n="findLi1">Eng yaxshi shifokorlarni qidirish</li>
+            <li data-i18n="findLi2">Joylashuv va bo'lim bo'yicha filtrlash</li>
+            <li data-i18n="findLi3">Reseption Panel orqali bemor profillari</li>
+          </ul>
+        </div>
+        <div class="mock-ui">
+          <p class="mock-title">🔍 <span data-i18n="searchBtn">Qidirish</span></p>
+          <input type="text" disabled class="mock-input" />
+          <input type="text" disabled class="mock-input" />
+        </div>
+      </div>
+    </section>
+
+    <section id="specialists">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-i18n="specialistsTitle">Mutaxassislarimiz bilan tanishing</h2>
+          <p data-i18n="specialistsSub">Klinikamizning tajribali shifokorlari</p>
+        </div>
+        <div class="doctors-slider" id="doctors-grid"></div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div>
+          <h2 data-i18n="newsletterTitle">Yangiliklar uchun obuna bo'ling</h2>
+          <p class="newsletter-desc" data-i18n="newsletterSub">Eng yaxshi tibbiy maslahatlar va klinika yangiliklari</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" id="newsletter-email" data-i18n-placeholder="newsletterEmail" placeholder="Email manzilingiz" required />
+          <button type="submit" class="btn" data-i18n="newsletterBtn">Obuna</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">Care<span class="logo-accent">Track</span></div>
+          <p data-i18n="footerAbout">MediCore Solutions — klinikalar uchun raqamli tibbiy yozuvlar tizimi.</p>
+        </div>
+        <div>
+          <h4 data-i18n="footerNav">Navigatsiya</h4>
+          <ul>
+            <li><a href="#home" data-i18n="navHome">Bosh sahifa</a></li>
+            <li><a href="#about" data-i18n="navAbout">Biz haqimizda</a></li>
+            <li><a href="#services" data-i18n="navServices">Xizmatlar</a></li>
+            <li><a href="/login" data-i18n="navLogin">Kirish</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="footerCompany">Kompaniya</h4>
+          <ul>
+            <li><a href="#" data-i18n="footerContact">Aloqa</a></li>
+            <li><a href="#" data-i18n="footerPrivacy">Maxfiylik siyosati</a></li>
+            <li><a href="#" data-i18n="footerMediCore">MediCore haqida</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footerCopy">© 2026 MediCore Solutions — CareTrack Clinic</span>
+        <a href="#home" class="btn btn-ghost btn-sm" data-i18n="backTop">Yuqoriga</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="/vendor/axios/axios.min.js"></script>
+  <script src="/js/i18n.js"></script>
+  <script src="/js/preferences.js"></script>
+  <script src="/js/auth-session.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/mobile-nav.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>
